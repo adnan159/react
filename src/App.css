@@ -17,12 +17,14 @@
 
 .product-list {
   display: flex;
-  align-items: center;
+  flex-flow: row wrap;
   justify-content: center;
   flex: 0 0 60%;
+}
+
+.product {
+  margin: 10px;
   border: 1px solid gray;
-  height: 100vh;
-  background-color: powderblue;
 }
 
 .cart-bar {
@@ -31,6 +33,19 @@
   justify-content: center;
   flex: 0 0 25%;
   border: 1px solid gray;
-  height: 100vh;
-  background-color: palegoldenrod;
+}
+
+.action {
+  display: flex;
+}
+
+.product-image{
+  height: 300px;
+  width: 250px;
+}
+
+.product .title, .action {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }
