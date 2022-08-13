@@ -1,9 +1,14 @@
 import './App.css';
+import NavBar from './NavBar/NavBar.jsx';
+import ProductList from './ProductList/ProductList.jsx';
+import Cart from './Cart/Cart.jsx';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      Hello World
+      <NavBar />
+      <ProductList />
+      <Cart />
     </div>
   );
 }
