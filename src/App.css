@@ -24,7 +24,8 @@
 
 .product {
   margin: 10px;
-  border: 1px solid gray;
+  border: 2px solid gray;
+  width: 290px;
 }
 
 .cart-bar {
@@ -37,15 +38,31 @@
 
 .action {
   display: flex;
+  border-top: 2px solid gray;
 }
 
 .product-image{
-  height: 300px;
-  width: 250px;
+  height: 280px;
+  display: space-between;
 }
 
 .product .title, .action {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+}
+
+.add-to-cart {
+  height: 25px;
+  background-color: #27990b;
+  color: white;
+  font-weight: 600;
+  border: none;
+  align-items: center;
+}
+
+.price {
+  font-size: 15px;
+  font-weight: bold;
+  align-items: center;
 }
