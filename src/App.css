@@ -13,6 +13,8 @@
   background-color: black;
   color: white;
   font-size: 20px;
+  position: sticky;
+  top: 0px;
 }
 
 .search-bar {
@@ -38,10 +40,10 @@
 
 .cart-bar {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  text-align: center;
   flex: 0 0 25%;
-  border: 1px solid gray;
+  border: 2px solid gray;
 }
 
 .action {
@@ -73,4 +75,23 @@
   font-size: 15px;
   font-weight: bold;
   align-items: center;
+}
+
+.cart-items {
+    display: flex;
+    padding: 10px;
+    margin: 2px;
+    text-align: center;
+    border: 0.5px solid powderblue;
+    box-shadow: 0.5px 0.5px 0.5px 0.5px gray;
+}
+
+.item-info {
+  margin-left: 5px;
+  width: 100%;
+}
+
+.item-info span {
+  justify-content: space-between;
+  margin: 10px;
 }

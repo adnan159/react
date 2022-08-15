@@ -7,18 +7,28 @@ import data from './data';
 
 const App = () => {
   const [ products, setProducts ] = useState( [...data] );
+  const [ cartItems, setCartItem ] = useState( [] );
   const [ searchKeyword, setSearchKeyword ] = useState("");
 
   useEffect(()=> {
-    const result = data.filter( product => (product.brand.includes(searchKeyword) || product.title.includes(searchKeyword)));
+    const result = data.filter( product => (product.brand.includes(searchKeyword) || product.brand.includes(searchKeyword)));
     setProducts(result);
   }, [searchKeyword]);
+
+  const addCartItem = ( id ) => {
+    const item = products.find(product => product.id === id );
+
+    setCartItem((items) => [
+      ...items,
+      item
+    ]);
+  }
 
   return (
     <div className="App">
       <NavBar setSearchKeyword = { setSearchKeyword } />
-      <ProductList products = { products } />
-      <Cart />
+      <ProductList products = { products } addCartItem = {addCartItem} />
+      <Cart cart = { cartItems } />
     </div>
   );
 }

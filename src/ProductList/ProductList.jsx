@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Product = ( { id, title, brand, price, image_url } ) => {
+const Product = ( { id, title, brand, price, image_url, addCartItem } ) => {
   return (
     <div className="product">
         <img className="product-image" src={image_url} alt={title} />
@@ -10,16 +10,16 @@ const Product = ( { id, title, brand, price, image_url } ) => {
         </div>
         <div className="action">
             <div className="price">${price}</div>
-            <button className="add-to-cart">Add to Cart</button>
+            <button className="add-to-cart" onClick={() =>addCartItem(id)} >Add to Cart</button>
         </div>
       </div>
   );
 }
 
-const ProductList = ( {products} ) => {
+const ProductList = ( { products, addCartItem } ) => {
   return <div className="product-list">
     {products.map((product) => {
-      return <Product {...product} key={product.id}/>
+      return <Product {...product} key={product.id} addCartItem={addCartItem} />
     })}      
   </div>;
 }
