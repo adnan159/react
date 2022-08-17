@@ -18,10 +18,24 @@ const App = () => {
   const addCartItem = ( id ) => {
     const item = products.find(product => product.id === id );
 
-    setCartItem((items) => [
-      ...items,
-      item
-    ]);
+    setCartItem((items) => {
+      const itemIndex = items.findIndex( currentItem => currentItem.id === id );
+
+      if( itemIndex === -1 ) {
+          return [ ...items, {
+            ...item,
+            quantity:1
+          }]
+      } else {
+        return items.map(currentItem => 
+          currentItem.id === id 
+          ? {
+                  ...item,
+                  quantity: parseInt(currentItem.quantity) + 1
+            } : currentItem
+        );
+      }
+    });
   }
 
   return (
