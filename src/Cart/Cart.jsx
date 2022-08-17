@@ -31,8 +31,8 @@ const Cart = ({cart, removeCartItem, clearCart }) => {
 
       <div className="cart-items">
         <div className="action-buttons">
-          <button onClick={clearCart} >Clear Cart</button>
-          <button>Checkout</button>
+          <button className="clear-cart-button" onClick={clearCart} >Clear Cart</button>
+          <button className="checkout-button">Checkout</button>
         </div>
       </div>
 
