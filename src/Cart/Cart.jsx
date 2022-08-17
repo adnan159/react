@@ -12,7 +12,7 @@ const CartItems = ({ id, title, price, quantity, removeCartItem }) => {
   );
 }
 
-const Cart = ({cart, removeCartItem }) => {
+const Cart = ({cart, removeCartItem, clearCart }) => {
   const total = cart.reduce( ( sum, current ) => sum + current.price, 0 );
 
   return  (
@@ -26,6 +26,13 @@ const Cart = ({cart, removeCartItem }) => {
         <div className="item-info">
           <span>Total</span>
           <span>$ {total}</span>
+        </div>
+      </div>
+
+      <div className="cart-items">
+        <div className="action-buttons">
+          <button onClick={clearCart} >Clear Cart</button>
+          <button>Checkout</button>
         </div>
       </div>
 
