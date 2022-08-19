@@ -18,23 +18,40 @@ const Cart = ({cart, removeCartItem, clearCart }) => {
   return  (
     <div className="cart-bar">
       <h4>Cart Items</h4>
-      {cart.map( item => (
-        <CartItems {...item} price={item.price*item.quantity} key={item.id} removeCartItem={removeCartItem} />
-      ))}      
 
-      <div className="cart-items">
-        <div className="item-info">
-          <span>Total</span>
-          <span>$ {total}</span>
+      {cart.length === 0 && (
+        <div className="cart-items">
+          <div className="item-info">
+            <span>Cart is Empty ! </span>
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="cart-items">
-        <div className="action-buttons">
-          <button className="clear-cart-button" onClick={clearCart} >Clear Cart</button>
-          <button className="checkout-button">Checkout</button>
-        </div>
-      </div>
+      {cart.length !== 0 && (
+        <>
+          {cart.map( item => (
+            <CartItems {...item} 
+              price={ item.price * item.quantity } 
+              key={item.id} 
+              removeCartItem={removeCartItem} 
+            />
+          ))}      
+
+          <div className="cart-items">
+            <div className="item-info">
+              <span>Total</span>
+              <span>$ {total}</span>
+            </div>
+          </div>
+
+          <div className="cart-items">
+            <div className="action-buttons">
+              <button className="clear-cart-button" onClick={clearCart} >Clear Cart</button>
+              <button className="checkout-button">Checkout</button>
+            </div>
+          </div>
+        </>
+      )}     
 
     </div>
   );
