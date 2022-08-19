@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const CartItems = ({ id, title, price, quantity, removeCartItem }) => {
   return(
@@ -13,7 +13,20 @@ const CartItems = ({ id, title, price, quantity, removeCartItem }) => {
 }
 
 const Cart = ({cart, removeCartItem, clearCart }) => {
+
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [address, setAddress] = useState("");
+  // const [checkoutButtonText, setCheckoutButtonText] = useState("Checkout");
+
   const total = cart.reduce( ( sum, current ) => sum + current.price * current.quantity, 0 );
+
+  const handleCheckout = () => {
+    setCheckoutOpen(status => !status);
+  }
+
+  const handleAddressChange = (e) => {
+    setAddress(e.target.value);
+  }
 
   return  (
     <div className="cart-bar">
@@ -47,11 +60,30 @@ const Cart = ({cart, removeCartItem, clearCart }) => {
           <div className="cart-items">
             <div className="action-buttons">
               <button className="clear-cart-button" onClick={clearCart} >Clear Cart</button>
-              <button className="checkout-button">Checkout</button>
+              <button 
+                className="checkout-button" 
+                onClick={handleCheckout}
+              >
+                {checkoutOpen ? "Hide" : "Checkout"}
+              </button>
             </div>
           </div>
         </>
-      )}     
+      )} 
+
+      {cart.length !== 0 && checkoutOpen === true && (
+        <div className="cart-items">
+          <div className="item-info">
+            <span><input type="text" className="address-area" onChange={handleAddressChange}></input></span>
+            <button style={{backgroundColor: !address ? "gray" : "#3b88c3"}} 
+              className="checkout-button"
+              onClick = {clearCart}
+            >
+                Checkout
+            </button>
+          </div>
+        </div>
+      )}    
 
     </div>
   );
