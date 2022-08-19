@@ -13,13 +13,13 @@ const CartItems = ({ id, title, price, quantity, removeCartItem }) => {
 }
 
 const Cart = ({cart, removeCartItem, clearCart }) => {
-  const total = cart.reduce( ( sum, current ) => sum + current.price, 0 );
+  const total = cart.reduce( ( sum, current ) => sum + current.price * current.quantity, 0 );
 
   return  (
     <div className="cart-bar">
       <h4>Cart Items</h4>
       {cart.map( item => (
-        <CartItems {...item} key={item.id} removeCartItem={removeCartItem} />
+        <CartItems {...item} price={item.price*item.quantity} key={item.id} removeCartItem={removeCartItem} />
       ))}      
 
       <div className="cart-items">
