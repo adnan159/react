@@ -14,7 +14,7 @@ const App = () => {
   const { cartItems, addCartItem, removeCartItem, clearCart } = useCart([], products);
 
   useEffect(()=> {
-    const result = data.filter( product => (product.brand.includes(searchKeyword) || product.brand.includes(searchKeyword)));
+    const result = data.filter( product => (product.brand.includes(searchKeyword) || product.title.includes(searchKeyword)));
     setProducts(result);
   }, [searchKeyword]);
 

@@ -18,7 +18,6 @@ const Cart = ({cart, removeCartItem, clearCart }) => {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [address, setAddress] = useState("");
   const { dark } = useContext(ThemeContex);
-  // const [checkoutButtonText, setCheckoutButtonText] = useState("Checkout");
 
   const total = cart.reduce( ( sum, current ) => sum + current.price * current.quantity, 0 );
 
