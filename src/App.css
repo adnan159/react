@@ -147,3 +147,8 @@
   font-size: 18px;
   margin: 0px 5px 0px 15px;
 }
+
+.cart-dark, .product-dark, .body-dark {
+  background-color: #353B45;
+  color: white;
+}

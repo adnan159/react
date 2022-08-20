@@ -25,9 +25,9 @@ const App = () => {
 
   return (
     <ThemeContex.Provider
-      value={{ dark: dark, toggole: toogleDark }}
+      value={{ dark: dark, toggle: toogleDark }}
     >
-      <div className="App">
+      <div className={`App ${dark ? "body-dark" : "body-light"}`}>
         <NavBar setSearchKeyword = { setSearchKeyword } />
         <ProductList products = { products } addCartItem = {addCartItem} />
         <Cart 
