@@ -130,3 +130,20 @@
   border: 0.5px solid gray;
   border-radius: 5px;
 }
+
+.change-theme {
+  height: 35px;
+  padding: 10px;
+  margin-left: 10px;
+  font-weight: bold;
+  color: gray;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.theme-mode {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0px 5px 0px 15px;
+}

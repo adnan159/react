@@ -5,10 +5,12 @@ import ProductList from './ProductList/ProductList';
 import Cart from './Cart/Cart';
 import useCart from './useCart';
 import data from './data';
+import ThemeContex from './ThemeContex';
 
 const App = () => {
   const [ products, setProducts ] = useState( [...data] );
   const [ searchKeyword, setSearchKeyword ] = useState("");
+  const [ dark, setDark ] = useState(false);
   const { cartItems, addCartItem, removeCartItem, clearCart } = useCart([], products);
 
   useEffect(()=> {
@@ -16,17 +18,25 @@ const App = () => {
     setProducts(result);
   }, [searchKeyword]);
 
+  const toogleDark = () => {
+    setDark( isDark => !isDark );
+  };
+
 
   return (
-    <div className="App">
-      <NavBar setSearchKeyword = { setSearchKeyword } />
-      <ProductList products = { products } addCartItem = {addCartItem} />
-      <Cart 
-        cart = { cartItems } 
-        removeCartItem={removeCartItem} 
-        clearCart={clearCart} 
-      />
-    </div>
+    <ThemeContex.Provider
+      value={{ dark: dark, toggole: toogleDark }}
+    >
+      <div className="App">
+        <NavBar setSearchKeyword = { setSearchKeyword } />
+        <ProductList products = { products } addCartItem = {addCartItem} />
+        <Cart 
+          cart = { cartItems } 
+          removeCartItem={removeCartItem} 
+          clearCart={clearCart} 
+        />
+      </div>
+    </ThemeContex.Provider>
   );
 }
 
