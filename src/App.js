@@ -7,6 +7,7 @@ import {
 import './App.css';
 import NavBar from './NavBar/NavBar';
 import ProductList from './ProductList/ProductList';
+import ProductDetails from './ProductList/ProductDetails';
 import Cart from './Cart/Cart';
 import useCart from './useCart';
 import data from './data';
@@ -49,6 +50,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={ <Home /> } />
             <Route path="/checkout" element={ <Checkout /> } />
+            <Route path="/product/:itemId" element={ <ProductDetails /> } />
           </Routes>
         </Router>
       </div>
