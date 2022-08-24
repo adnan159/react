@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -6,39 +6,18 @@ import {
 } from "react-router-dom";
 import './App.css';
 import NavBar from './NavBar/NavBar';
-import ProductList from './ProductList/ProductList';
 import ProductDetails from './ProductList/ProductDetails';
-import Cart from './Cart/Cart';
-import useCart from './useCart';
-import data from './data';
 import ThemeContex from './ThemeContex';
 import Checkout from './Checkout/Checkout';
+import Home from './Home/Home';
 
 const App = () => {
-  const [ products, setProducts ] = useState( [...data] );
   const [ searchKeyword, setSearchKeyword ] = useState("");
   const [ dark, setDark ] = useState( false );
-  const { cartItems, addCartItem, removeCartItem, clearCart } = useCart( [], products );
-
-  useEffect(() => {
-    const result = data.filter( product => ( product.brand.includes( searchKeyword ) || product.title.includes( searchKeyword ) ) );
-    setProducts( result );
-  }, [ searchKeyword ] );
 
   const toogleDark = () => {
     setDark( isDark => ! isDark );
   };
-
-  const Home = () => (
-      <>
-        <ProductList products = { products } addCartItem = { addCartItem } />
-        <Cart 
-          cart = { cartItems } 
-          removeCartItem = { removeCartItem } 
-          clearCart = { clearCart } 
-        />
-      </>
-    );
 
   return (
     <ThemeContex.Provider
@@ -48,7 +27,7 @@ const App = () => {
         <Router>
           <NavBar setSearchKeyword = { setSearchKeyword } />
           <Routes>
-            <Route path="/" element={ <Home /> } />
+            <Route path="/" element={ <Home searchKeyword = { searchKeyword } /> } />
             <Route path="/checkout" element={ <Checkout /> } />
             <Route path="/product/:itemId" element={ <ProductDetails /> } />
           </Routes>
